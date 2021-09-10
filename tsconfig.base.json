@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@my-orgnization/oclm/ui-shared": ["libs/oclm/ui-shared/src/index.ts"],
+      "@my-orgnization/oclm/utils": ["libs/oclm/utils/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

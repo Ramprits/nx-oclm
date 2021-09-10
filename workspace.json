@@ -1,8 +1,6 @@
 {
   "version": 2,
-  "cli": {
-    "defaultCollection": "@nrwl/react"
-  },
+  "cli": { "defaultCollection": "@nrwl/react" },
   "defaultProject": "oclm",
   "generators": {
     "@nrwl/react": {
@@ -11,13 +9,8 @@
         "linter": "eslint",
         "babel": true
       },
-      "component": {
-        "style": "styled-components"
-      },
-      "library": {
-        "style": "styled-components",
-        "linter": "eslint"
-      }
+      "component": { "style": "styled-components" },
+      "library": { "style": "styled-components", "linter": "eslint" }
     }
   },
   "projects": {
@@ -67,20 +60,14 @@
         },
         "serve": {
           "executor": "@nrwl/web:dev-server",
-          "options": {
-            "buildTarget": "oclm:build"
-          },
+          "options": { "buildTarget": "oclm:build" },
           "configurations": {
-            "production": {
-              "buildTarget": "oclm:build:production"
-            }
+            "production": { "buildTarget": "oclm:build:production" }
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/oclm/**/*.{ts,tsx,js,jsx}"]
-          }
+          "options": { "lintFilePatterns": ["apps/oclm/**/*.{ts,tsx,js,jsx}"] }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -105,15 +92,51 @@
             "devServerTarget": "oclm:serve"
           },
           "configurations": {
-            "production": {
-              "devServerTarget": "oclm:serve:production"
-            }
+            "production": { "devServerTarget": "oclm:serve:production" }
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["apps/oclm-e2e/**/*.{js,ts}"] }
+        }
+      }
+    },
+    "oclm-ui-shared": {
+      "root": "libs/oclm/ui-shared",
+      "sourceRoot": "libs/oclm/ui-shared/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/oclm-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": ["libs/oclm/ui-shared/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/oclm/ui-shared"],
+          "options": {
+            "jestConfig": "libs/oclm/ui-shared/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "oclm-utils": {
+      "root": "libs/oclm/utils",
+      "sourceRoot": "libs/oclm/utils/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/oclm/utils/**/*.ts"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/oclm/utils"],
+          "options": {
+            "jestConfig": "libs/oclm/utils/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
