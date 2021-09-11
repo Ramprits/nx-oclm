@@ -1,11 +1,16 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 
 import App from './app';
 
 describe('App', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<App />);
+    const { baseElement } = render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
 
     expect(baseElement).toBeTruthy();
   });
