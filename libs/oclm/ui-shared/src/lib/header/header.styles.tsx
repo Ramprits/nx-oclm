@@ -43,5 +43,6 @@ export const DrawerContainer = styled('div')(({ theme }) => ({
 
 export const Content = styled('main')(({ theme }) => ({
   flexGrow: 1,
-  padding: theme.spacing(3),
+  padding: theme.spacing(2),
+  margin: theme.spacing(2),
 }));
