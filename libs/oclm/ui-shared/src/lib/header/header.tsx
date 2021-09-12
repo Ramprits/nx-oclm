@@ -71,17 +71,13 @@ export const Header = (props: HeaderProps) => {
     main: Array.isArray(props.bucketMain) ? props.bucketMain : [],
   };
 
-  const [state, setState] = React.useState({ open: false });
+  const [open, setOpen] = React.useState(false);
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
 
-  const toggleDrawer = (open) => (event) => {
-    if (
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
-    ) {
-      return;
-    }
-
-    setState({ ...state, open });
+  const handleDrawerClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -92,7 +88,7 @@ export const Header = (props: HeaderProps) => {
             edge="start"
             color="inherit"
             aria-label="menu"
-            onClick={toggleDrawer(true)}
+            onClick={handleDrawerOpen}
           >
             <MenuIcon />
           </MenuButton>
@@ -142,11 +138,7 @@ export const Header = (props: HeaderProps) => {
           </List>
         </DrawerContainer>
       </CustomDrawer>
-      <CustomDrawer
-        anchor="left"
-        open={state.open}
-        onClose={toggleDrawer(false)}
-      >
+      <CustomDrawer anchor="left" open={open} onClose={handleDrawerClose}>
         <DrawerContainer>
           <List>
             <ListItem button key={content['home']}>
@@ -179,8 +171,8 @@ export const Header = (props: HeaderProps) => {
       <Content>
         <Toolbar />
         <div>
-          {buckets['main'].map((component) => (
-            <React.Fragment>{component}</React.Fragment>
+          {buckets['main'].map((component, idx) => (
+            <React.Fragment key={idx}>{component}</React.Fragment>
           ))}
         </div>
       </Content>
