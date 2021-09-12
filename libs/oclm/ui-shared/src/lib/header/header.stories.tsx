@@ -8,9 +8,5 @@ export default {
 };
 
 export const primary = () => {
-  const props: HeaderProps = {
-    title: text('title', 'OCLM'),
-  };
-
-  return <Header title={props.title} />;
+  return <Header content={null} bucketMain={[]} />;
 };
